@@ -28,6 +28,7 @@ interface StoreShape {
   installations: Installation[];
   addInstallation: (i: Omit<Installation, "id" | "created_at">) => void;
   updateInstallation: (id: string, patch: Partial<Installation>) => void;
+  removeInstallation: (id: string) => void;
 
   expenses: Expense[];
   addExpense: (e: Omit<Expense, "id">) => void;
@@ -74,6 +75,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
             contact_person: entry.contact_person,
             address: entry.location,
             institution_type: "synagogue",
+            task_type: "new",
             notes: entry.notes,
             status: "חדש",
             source_type: "filter",
@@ -98,7 +100,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
           prev.map((i) => {
             if (i.id !== id) return i;
             const next = { ...i, ...patch };
-            if (patch.milestone_installed && !i.milestone_installed) {
+            if (patch.milestone_installed && !i.milestone_installed && i.task_type === "new") {
               setDevices((prevD) => [
                 {
                   id: uid("d"),
@@ -121,6 +123,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
             return next;
           })
         ),
+      removeInstallation: (id) => setInstallations((prev) => prev.filter((i) => i.id !== id)),
 
       expenses,
       addExpense: (e) => setExpenses((prev) => [{ ...e, id: uid("e") }, ...prev]),
@@ -160,8 +163,8 @@ export function useFilterEntries() {
 }
 
 export function useInstallations() {
-  const { installations, addInstallation, updateInstallation } = useStoreContext();
-  return { installations, addInstallation, updateInstallation };
+  const { installations, addInstallation, updateInstallation, removeInstallation } = useStoreContext();
+  return { installations, addInstallation, updateInstallation, removeInstallation };
 }
 
 export function useExpenses() {
