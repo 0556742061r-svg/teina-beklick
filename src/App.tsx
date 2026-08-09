@@ -5,6 +5,7 @@ import DevicesPage from "@/pages/DevicesPage";
 import FinancesPage from "@/pages/FinancesPage";
 import DataFilterPage from "@/pages/DataFilterPage";
 import InstallationsTrackerPage from "@/pages/InstallationsTrackerPage";
+import InstallationPointsPage from "@/pages/InstallationPointsPage";
 import GabbaiPortalPage from "@/pages/GabbaiPortalPage";
 import AuthPage from "@/pages/AuthPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/finances" element={<FinancesPage />} />
           <Route path="/data-filter" element={<DataFilterPage />} />
           <Route path="/installations" element={<InstallationsTrackerPage />} />
+          <Route path="/installation-points" element={<InstallationPointsPage />} />
           <Route path="/gabbai-portal" element={<GabbaiPortalPage />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/gabbai-login" element={<AuthPage gabbai />} />
