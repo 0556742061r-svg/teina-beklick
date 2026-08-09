@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Smartphone, Wallet, ListFilter, ClipboardCheck, LogOut, MapPin } from "lucide-react";
+import { LayoutDashboard, Smartphone, Wallet, ListFilter, ClipboardCheck, LogOut, MapPin, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -11,9 +11,9 @@ const navItems = [
   { to: "/installation-points", label: "נקודות התקנה", icon: MapPin },
 ];
 
-export function AppSidebar() {
+function SidebarInner({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <aside className="hidden md:flex md:w-64 md:flex-col shrink-0 bg-gradient-brand p-3">
+    <>
       <div className="mb-4 rounded-lg bg-white p-4 shadow-elevated">
         <div className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-brand text-white font-extrabold text-sm">TK</div>
@@ -30,6 +30,7 @@ export function AppSidebar() {
             key={to}
             to={to}
             end={to === "/"}
+            onClick={onNavigate}
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
@@ -50,6 +51,34 @@ export function AppSidebar() {
           התנתקות
         </button>
       </div>
+    </>
+  );
+}
+
+export function AppSidebar() {
+  return (
+    <aside className="hidden md:flex md:w-64 md:flex-col shrink-0 bg-gradient-brand p-3">
+      <SidebarInner />
     </aside>
+  );
+}
+
+export function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex md:hidden">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <aside className="relative flex w-72 max-w-[85vw] flex-col bg-gradient-brand p-3">
+        <button
+          onClick={onClose}
+          className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-md bg-white/15 text-white"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <div className="mt-10">
+          <SidebarInner onNavigate={onClose} />
+        </div>
+      </aside>
+    </div>
   );
 }
