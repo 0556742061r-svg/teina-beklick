@@ -1,4 +1,4 @@
-export type DeviceCategory =
+  export type DeviceCategory =
   | "synagogue"
   | "kollel"
   | "yeshiva"
@@ -105,6 +105,17 @@ export interface PartnerSplit {
   partner2_name: string;
   partner1_percent: number;
   partner2_percent: number;
+}
+
+export interface InstallationPoint {
+  id: string;
+  title: string;
+  lat: number;
+  lng: number;
+  photo_url: string | null;
+  notes: string | null;
+  status: "pending" | "installed";
+  created_at: string;
 }
 
 export interface GabbaiPayment {
