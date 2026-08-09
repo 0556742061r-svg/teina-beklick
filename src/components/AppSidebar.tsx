@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Smartphone, Wallet, ListFilter, ClipboardCheck, LogOut } from "lucide-react";
+import { LayoutDashboard, Smartphone, Wallet, ListFilter, ClipboardCheck, LogOut, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -8,6 +8,7 @@ const navItems = [
   { to: "/finances", label: "כספים", icon: Wallet },
   { to: "/data-filter", label: "סינון נתונים", icon: ListFilter },
   { to: "/installations", label: "מעקב התקנות", icon: ClipboardCheck },
+  { to: "/installation-points", label: "נקודות התקנה", icon: MapPin },
 ];
 
 export function AppSidebar() {
@@ -18,7 +19,7 @@ export function AppSidebar() {
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-brand text-white font-extrabold text-sm">TK</div>
           <div>
             <p className="text-sm font-bold leading-tight">טעינה בקליק</p>
-            <p className="text-[11px] text-muted-foreground leading-tight">ניהול ערך צבור</p>
+            <p className="text-[11px] text-muted-foreground leading-tight">ניהול רב-קו</p>
           </div>
         </div>
       </div>
