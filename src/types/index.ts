@@ -1,4 +1,4 @@
-  export type DeviceCategory =
+export type DeviceCategory =
   | "synagogue"
   | "kollel"
   | "yeshiva"
@@ -62,6 +62,24 @@ export interface FilterEntry {
   created_at: string;
 }
 
+export type InstallationTaskType = "new" | "upgrade" | "repair" | "swap" | "other";
+
+export const taskTypeLabels: Record<InstallationTaskType, string> = {
+  new: "התקנה חדשה",
+  upgrade: "שדרוג",
+  repair: "תיקון",
+  swap: "החלפת מכשיר",
+  other: "אחר",
+};
+
+export const taskTypeMilestoneLabels: Record<InstallationTaskType, [string, string, string, string]> = {
+  new: ["יצירת קשר", "אישור", "בדיקה", "התקנה"],
+  upgrade: ["יצירת קשר", "אישור שדרוג", "תיאום מועד", "בוצע"],
+  repair: ["דיווח תקלה", "אבחון", "תיאום טכנאי", "תוקן"],
+  swap: ["יצירת קשר", "אישור החלפה", "תיאום מועד", "הוחלף"],
+  other: ["יצירת קשר", "אישור", "ביצוע", "הושלם"],
+};
+
 export interface Installation {
   id: string;
   institution_name: string;
@@ -69,6 +87,7 @@ export interface Installation {
   contact_person: string;
   address: string;
   institution_type: DeviceCategory;
+  task_type: InstallationTaskType;
   notes: string;
   status: string;
   source_type: "direct" | "filter";
