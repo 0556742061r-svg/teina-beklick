@@ -2,7 +2,6 @@ import { useState, type ReactNode } from "react";
 import { Menu } from "lucide-react";
 import { AppSidebar, MobileSidebar } from "./AppSidebar";
 import { GlobalMissingDataBell } from "./GlobalMissingDataBell";
-import { HelpButton } from "./HelpButton";
 
 export function Layout({ children, title, subtitle }: { children: ReactNode; title?: string; subtitle?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,7 +31,6 @@ export function Layout({ children, title, subtitle }: { children: ReactNode; tit
         </header>
         <main className="flex-1 p-4 md:p-6">{children}</main>
       </div>
-      <HelpButton />
     </div>
   );
 }
