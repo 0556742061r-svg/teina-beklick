@@ -155,3 +155,16 @@ export interface VoiceExpenseNote {
   status: "pending" | "converted";
   created_at: string;
 }
+
+export type GabbaiFundEntryType = "received" | "personal_take" | "shared_expense_take" | "paid_to_gabbai" | "repayment";
+
+export interface GabbaiFundEntry {
+  id: string;
+  entry_type: GabbaiFundEntryType;
+  amount: number;
+  partner: "partner1" | "partner2" | null;
+  recipient_name: string | null;
+  note: string | null;
+  entry_date: string;
+  created_at: string;
+}
