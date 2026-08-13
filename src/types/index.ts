@@ -143,3 +143,15 @@ export interface GabbaiPayment {
   amount: number;
   paid_at: string;
 }
+
+export interface VoiceExpenseNote {
+  id: string;
+  audio_url: string;
+  duration_seconds: number | null;
+  transcribed_text: string | null;
+  amount: number | null;
+  category: string | null;
+  payer: "partner1" | "partner2" | null;
+  status: "pending" | "converted";
+  created_at: string;
+}
