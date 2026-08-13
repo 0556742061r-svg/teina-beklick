@@ -3,6 +3,7 @@ import { AppDataProvider } from "@/store/useStore";
 import Index from "@/pages/Index";
 import DevicesPage from "@/pages/DevicesPage";
 import FinancesPage from "@/pages/FinancesPage";
+import GabbaiFundPage from "@/pages/GabbaiFundPage";
 import DataFilterPage from "@/pages/DataFilterPage";
 import InstallationsTrackerPage from "@/pages/InstallationsTrackerPage";
 import InstallationPointsPage from "@/pages/InstallationPointsPage";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/devices" element={<DevicesPage />} />
           <Route path="/finances" element={<FinancesPage />} />
+          <Route path="/gabbai-fund" element={<GabbaiFundPage />} />
           <Route path="/data-filter" element={<DataFilterPage />} />
           <Route path="/installations" element={<InstallationsTrackerPage />} />
           <Route path="/installation-points" element={<InstallationPointsPage />} />
