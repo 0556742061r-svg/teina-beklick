@@ -13,6 +13,8 @@ import { useFinances, useExpenses } from "@/store/useStore";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { Plus, Upload, Trash2, Pencil, Scale } from "lucide-react";
 import { toast } from "sonner";
+import { VoiceExpenseRecorder } from "@/components/VoiceExpenseRecorder";
+import { PendingVoiceNotes } from "@/components/PendingVoiceNotes";
 
 const emptyExpense: Omit<import("@/types").Expense, "id"> = {
   description: "",
@@ -104,13 +106,13 @@ export default function FinancesPage() {
         <Card>
           <CardContent className="pt-5">
             <p className="text-xs text-muted-foreground mb-1">הוצאות</p>
-            <p className="text-2xl font-extrabold text-amber">{formatCurrency(totals.totalExpenses)}</p>
+            <p className="text-2xl font-extrabold text-amber-500">{formatCurrency(totals.totalExpenses)}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-5">
             <p className="text-xs text-muted-foreground mb-1">שליש לגבאים</p>
-            <p className="text-2xl font-extrabold text-violet">{formatCurrency(totals.gabbaiThird)}</p>
+            <p className="text-2xl font-extrabold text-violet-500">{formatCurrency(totals.gabbaiThird)}</p>
           </CardContent>
         </Card>
         <Card>
@@ -166,6 +168,8 @@ export default function FinancesPage() {
           </div>
         </CardContent>
       </Card>
+
+      <PendingVoiceNotes partnerSplit={partnerSplit} />
 
       <div className="flex items-center justify-between mb-3">
         <p className="text-sm font-semibold">הוצאות -- {periodMode === "all" ? "כל התקופות" : selectedMonth || "בחר חודש"}</p>
@@ -243,6 +247,8 @@ export default function FinancesPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <VoiceExpenseRecorder />
     </Layout>
   );
 }
