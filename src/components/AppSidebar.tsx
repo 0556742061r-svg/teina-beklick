@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Smartphone, Wallet, ListFilter, ClipboardCheck, LogOut, MapPin, X, PiggyBank } from "lucide-react";
+import { LayoutDashboard, Wallet, ClipboardCheck, LogOut, MapPin, X, PiggyBank } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/", label: "דשבורד", icon: LayoutDashboard },
-  { to: "/devices", label: "מכשירים", icon: Smartphone },
   { to: "/finances", label: "כספים", icon: Wallet },
   { to: "/gabbai-fund", label: "קרן גבאים", icon: PiggyBank },
-  { to: "/data-filter", label: "סינון נתונים", icon: ListFilter },
   { to: "/installations", label: "מעקב התקנות", icon: ClipboardCheck },
   { to: "/installation-points", label: "נקודות התקנה", icon: MapPin },
 ];
